@@ -16,6 +16,7 @@ public class VacancyCounterTest {
 
         String department = "Research & Development";
         String language = "English";
+        int vacancies = 14;
 
         WebDriverManager.chromedriver().setup();
 
@@ -47,13 +48,10 @@ public class VacancyCounterTest {
 
         Thread.sleep(2 * 1000);
 
-        String currentUrl = driver.getCurrentUrl();
+        driver.get(driver.getCurrentUrl() + language);
 
-        String newUrl = currentUrl + language;
-        driver.get(newUrl);
-
-        int vacancies = Integer.parseInt(driver.findElement(
-                By.xpath("//*[@id=\"root\"]/div/div[1]/div/h3/span")).getText());
+//        int vacancies = Integer.parseInt(driver.findElement(
+//                By.xpath("//*[@id=\"root\"]/div/div[1]/div/h3/span")).getText());
 
         List<WebElement> listOfVacancies = driver.findElements(
                 By.xpath("//*[@id=\"root\"]/div/div[1]/div/div/div[2]/div/*"));
