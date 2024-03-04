@@ -15,7 +15,6 @@ public class VacancyCounterTest {
     public static void main(String[] args) throws InterruptedException {
 
         String department = "Research & Development";
-        String language = "English";
         int vacancies = 14;
 
         WebDriverManager.chromedriver().setup();
@@ -46,20 +45,12 @@ public class VacancyCounterTest {
         assertNotNull(departmentElement);
         departmentElement.click();
 
-        Thread.sleep(2 * 1000);
-
-        driver.get(driver.getCurrentUrl() + language);
-
-//        int vacancies = Integer.parseInt(driver.findElement(
-//                By.xpath("//*[@id=\"root\"]/div/div[1]/div/h3/span")).getText());
-
         List<WebElement> listOfVacancies = driver.findElements(
                 By.xpath("//*[@id=\"root\"]/div/div[1]/div/div/div[2]/div/*"));
 
-        System.out.println(listOfVacancies.size());
         assertEquals(vacancies, listOfVacancies.size());
 
-        driver.wait(3 * 1000);
+        Thread.sleep(3 * 1000);
 
         driver.close();
     }
